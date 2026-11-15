@@ -75,7 +75,7 @@ The trained pipeline is used by the FastAPI backend for predictions.
 ### 1. Clone the repository
 
 ```bash
-git clone <YOUR_GITHUB_REPOSITORY_URL>
+git clone https://github.com/Ramesh-Dhamala/TumorAI.git
 cd TumorAI
 ```
 
