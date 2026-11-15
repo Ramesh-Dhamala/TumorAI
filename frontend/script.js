@@ -1,4 +1,4 @@
-const API_URL = "http://127.0.0.1:8000";
+const API_URL = "https://tumorai-api.onrender.com";
 
 const form = document.getElementById("prediction-form");
 const featuresContainer = document.getElementById("features-container");
@@ -18,7 +18,6 @@ const probabilityValue = document.getElementById("probability-value");
 const probabilityBar = document.getElementById("probability-bar");
 
 const errorMessage = document.getElementById("error-message");
-
 
 // --------------------------------------------------
 // 1. Format feature labels
@@ -262,18 +261,15 @@ form.addEventListener("submit", async (event) => {
 
     console.log("Total features:", Object.keys(features).length);
     console.log("Feature names:", Object.keys(features));
-    
-    
 
     const data = await response.json();
 
     console.log("Prediction response:", data);
 
-if (!response.ok) {
-  console.error("Backend validation error:", data.detail);
-  throw new Error(JSON.stringify(data.detail));
-}
-    
+    if (!response.ok) {
+      console.error("Backend validation error:", data.detail);
+      throw new Error(JSON.stringify(data.detail));
+    }
 
     displayResult(data);
   } catch (error) {
@@ -309,47 +305,37 @@ loadFeatures();
 // --------------------------------------------------
 
 demoButton.addEventListener("click", async () => {
+  errorMessage.classList.add("hidden");
+  resultSection.classList.add("hidden");
 
-    errorMessage.classList.add("hidden");
-    resultSection.classList.add("hidden");
+  demoButton.disabled = true;
+  demoButton.textContent = "Loading sample...";
 
-    demoButton.disabled = true;
-    demoButton.textContent = "Loading sample...";
+  try {
+    const response = await fetch(`${API_URL}/demo`);
 
-    try {
-
-        const response = await fetch(`${API_URL}/demo`);
-
-        if (!response.ok) {
-            throw new Error("Unable to load demo measurements.");
-        }
-
-        const data = await response.json();
-
-        // Fill all 30 input fields
-        Object.entries(data.features).forEach(([key, value]) => {
-
-            const input = document.getElementById(key);
-
-            if (input) {
-                input.value = value;
-            }
-
-        });
-
-        // Update completed input counter
-        updateProgress();
-
-    } catch (error) {
-
-        errorMessage.textContent = error.message;
-        errorMessage.classList.remove("hidden");
-
-    } finally {
-
-        demoButton.disabled = false;
-        demoButton.textContent = "✨ Try Demo";
-
+    if (!response.ok) {
+      throw new Error("Unable to load demo measurements.");
     }
 
+    const data = await response.json();
+
+    // Fill all 30 input fields
+    Object.entries(data.features).forEach(([key, value]) => {
+      const input = document.getElementById(key);
+
+      if (input) {
+        input.value = value;
+      }
+    });
+
+    // Update completed input counter
+    updateProgress();
+  } catch (error) {
+    errorMessage.textContent = error.message;
+    errorMessage.classList.remove("hidden");
+  } finally {
+    demoButton.disabled = false;
+    demoButton.textContent = "✨ Try Demo";
+  }
 });
