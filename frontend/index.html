@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="theme-color" content="#080d1b">
+    <title>TumorAI | AI-powered analysis</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="background-glow glow-one"></div>
+    <div class="background-glow glow-two"></div>
+
+    <header class="topbar">
+        <a href="#" class="brand">
+            <span class="brand-icon">✳</span>
+            <span>Tumor<span class="brand-accent">AI</span></span>
+        </a>
+
+        <div class="header-status">
+            <span class="status-dot"></span>
+            ML MODEL ONLINE
+        </div>
+    </header>
+
+    <main class="main-container">
+
+        <section class="hero reveal">
+        
+            <div class="eyebrow">
+                <span class="eyebrow-line"></span>
+                A STEP TOWARD INTELLIGENT HEALTHCARE
+            </div>
+        
+            <h1>
+                Turning tumor data<br>
+                into <span>meaningful insights.</span>
+            </h1>
+        
+            <p class="hero-description">
+                TumorAI is an educational project exploring how machine
+                learning can analyze breast tumor measurements and help
+                distinguish between benign and malignant patterns.
+                Our goal is to demonstrate how data-driven technology
+                can contribute to the broader journey of early detection
+                and healthcare research.
+            </p>
+        
+            <div class="hero-stats">
+                <div class="stat">
+                    <strong>Understand</strong>
+                    <span>Explore tumor measurements</span>
+                </div>
+        
+                <div class="stat-divider"></div>
+        
+                <div class="stat">
+                    <strong>Analyze</strong>
+                    <span>Discover data patterns</span>
+                </div>
+        
+                <div class="stat-divider"></div>
+        
+                <div class="stat">
+                    <strong>Predict</strong>
+                    <span>Explore model outputs</span>
+                </div>
+            </div>
+        
+        </section>
+
+
+        <section class="workspace reveal">
+
+            <div class="section-heading">
+                <div>
+                    <div class="section-kicker">ANALYSIS WORKSPACE</div>
+                    <h2>Tumor measurements</h2>
+                    <p>Enter the 30 numerical measurements below.</p>
+                </div>
+
+                <div class="feature-counter">
+                    <span id="filled-count">0</span>
+                    <span>/ 30 completed</span>
+                </div>
+            </div>
+
+            <div class="progress-track">
+                <div id="form-progress" class="progress-fill"></div>
+            </div>
+
+            <form id="prediction-form">
+
+                <div id="features-container">
+                    <div class="loading-features">
+                        <span class="spinner"></span>
+                        Preparing your workspace...
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                
+                    <button type="button" class="demo-button" id="demo-button">
+                        ✨ Try Demo
+                    </button>
+                
+                    <button type="reset" class="reset-button" id="reset-button">
+                        ↺ Reset fields
+                    </button>
+                
+                    <button type="submit" id="predict-button" disabled>
+                        <span class="button-text">Generate prediction</span>
+                        <span class="button-arrow">↗</span>
+                    </button>
+                
+                </div>
+
+
+            </form>
+
+            <div id="error-message" class="error-message hidden"></div>
+
+        </section>
+
+        <section id="result-section" class="result-section hidden">
+
+            <div class="result-header">
+                <div>
+                    <div class="section-kicker">MODEL OUTPUT</div>
+                    <h2>Prediction analysis</h2>
+                </div>
+
+                <span class="result-live">
+                    <span class="status-dot"></span>
+                    COMPLETE
+                </span>
+            </div>
+
+            <div id="result-card" class="result-card">
+
+                <div class="result-icon" id="result-icon">✦</div>
+
+                <div class="result-main">
+                    <span class="result-label">MODEL PREDICTION</span>
+                    <h3 id="prediction-result">--</h3>
+                    <p id="result-description"></p>
+                </div>
+
+                <div class="probability-block">
+                    <div class="probability-heading">
+                        <span>Malignant probability</span>
+                        <strong id="probability-value">0%</strong>
+                    </div>
+
+                    <div class="probability-track">
+                        <div id="probability-bar"></div>
+                    </div>
+
+                    <p class="probability-note">
+                        Model-estimated probability, not a clinical risk score.
+                    </p>
+                </div>
+
+            </div>
+
+            <div class="result-note">
+                <span>ⓘ</span>
+                <p>
+                    This application is an educational machine learning
+                    demonstration. It does not provide a medical diagnosis.
+                    Consult a qualified healthcare professional for medical
+                    assessment.
+                </p>
+            </div>
+
+        </section>
+
+
+
+    </main>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
